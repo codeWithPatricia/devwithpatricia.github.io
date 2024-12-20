@@ -1,4 +1,4 @@
- <html lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -18,6 +18,13 @@
       
   theme: {
     extend: {
+    colors: {
+        indigoBrand: '#6C63FF', // Primary color
+        pinkAccent: '#FF6584', // Accent color
+        lightGray: '#F8F9FA', // Background color
+        charcoalGray: '#343A40', // Text color
+        darkSlate: '#1F2937', // Footer background
+      },
       fontFamily:{
         domine:['Domine','serif'],
       },
@@ -60,10 +67,10 @@
 
 
         <!-- Hero Section -->
-        <section class="flex flex-col justify-start md:h-screen bg-gradient-to-br from-green-100 to-gray-300">
+        <section class="flex flex-col justify-start md:h-screen bg-gradient-to-r from-indigoBrand to-pinkAccent text-white">
 
             <!-- Navbar -->
-            <header class="bg-stone-50 shadow-md">
+            <header class=" shadow-md">
                 <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
                     <!-- Logo -->
                     <a href="#hero" class="text-xl font-bold text-purple-800">
@@ -72,10 +79,33 @@
 
                     <!-- Desktop Menu -->
                     <ul class="hidden md:flex space-x-6 uppercase text-sm">
-                        <li><a href="#portfolio" class="hover:text-pink-400">Portfolio</a></li>
-                        
-                        <li><a href="#contact" class="hover:text-amber-400">Contact Me</a></li>
-                    </ul>
+                      <li>
+                        <a 
+                          href="#portfolio" 
+                          class="hover-link relative text-white border-b border-white/20 pb-2 text-base md:text-lg tracking-wide"
+                          cursor-type="button">
+                          <span class="relative block overflow-hidden">
+                            <span class="inline-block relative transition-transform transform translate-y-0">
+                              Portfolio <span class="absolute top-0 left-0 translate-y-full">Portfolio</span>
+                            </span>
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a 
+                          href="#contact" 
+                          class="hover-link relative text-white border-b border-white/20 pb-2 text-base md:text-lg tracking-wide"
+                          cursor-type="button">
+                          <span class="relative block overflow-hidden">
+                            <span class="inline-block relative transition-transform transform translate-y-0">
+                              Contact <span class="absolute top-0 left-0 translate-y-full">Contact</span>
+                            </span>
+                            <span class="inline-block relative transition-transform transform translate-y-0 ml-2">
+                              Me <span class="absolute top-0 left-0 translate-y-full">Me</span>
+                            </span>
+                          </span>
+                        </a>
+                      </li></ul>
         
 
                     <!-- Mobile Menu Button -->
@@ -110,13 +140,13 @@
             </div>
 
             <!--Mobile style-->
-            <div class=" h-[70vh] md:hidden xs:w-full text-center justify-center content-center ">
+            <div class=" h-[70vh] md:hidden xs:w-full  text-center justify-center content-center ">
 
                 <div class="space-y-5">
-                    <h2 class="uppercase text-3xl  font-bold text-gray-800 tracking-widest">
+                    <h2 class="uppercase text-3xl  font-bold  tracking-widest">
                         Frontend Web Developer
                     </h2>
-                    <p class="capitalize text-2xl  font-bold text-gray-800 tracking-widest">
+                    <p class="capitalize text-2xl  font-bold  tracking-widest">
                         Based in Nigeria
                     </p>
                 </div>
@@ -125,7 +155,12 @@
         </section>
 
         <!-- Portfolio Section -->
-        <section id="portfolio" class="py-16 px-4 bg-gray-100">
+        <section id="portfolio" class="py-16 px-16  h-screen bg-lightGray text-charcoalGray">
+
+          <div>
+            <h3 class="text-2xl md:text-4xl font-bold text-center mb-8 font-bold  tracking-widest uppercase">Portfolio</h3>
+          </div>
+
             <div class="container projects-section uppercase">
                 <div class="projects">
                     <div class="section">
@@ -136,37 +171,89 @@
                         <h1 class="title">Yogurt Webpage</h1>
                         <p class="subtitle">E-Commerce</p>
                     </div>
-                    <!--<div class="section">
+                    <div class="section">
                         <h1 class="title">FABRIC™</h1>
                         <p class="subtitle">Design & Development</p>
-                    </div>-->
+                    </div>
                 </div>
             </div>
             <canvas></canvas>
         </section>
 
-  
-   
-  <footer>
-    <div class="mt-10 gap-8 flex flex-col sm:flex-row border-t border-gray-200 pt-6 text-center text-sm text-gray-600 justify-between">
-        <!-- Left Section -->
-        <div>
-          <p class="space-y-2">
-            Copyright © 2024
-            
-            All rights reserved.
-          </p>
-        </div>
-         
-        <!-- Right Section -->
-        <div>
-          <p class="space-y-2">
-            Website by
-            <span class="text-black font-bold">Iheagwara P. Onyekachukwu</span>
-          </p>
-        </div>
+  <!-- Contact Section -->
+<section id="contact" class="py-16 px-6 md:px-16 bg-gradient-to-r from-indigoBrand to-pinkAccen text-white relative">
+  <!-- Custom Cursor -->
+  <div
+    id="cursor"
+    class="pointer-events-none fixed w-12 h-12 border border-purple-300 rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out">
+  </div>
+
+  <!-- Container -->
+  <div class="container mx-auto text-center">
+    <h3 class="text-4xl md:text-4xl font-bold mb-8 uppercase">Contact Me</h3>
+
+    <div class="grid md:grid-cols-2 grid-cols-1 gap-6 ">
+      <!-- Contact Us Section -->
+      <div class="p-6">
+        <h3 class="text-2xl font-semibold text-gray-600 mb-6  uppercase">Call Me</h3>
+        <ul class="flex flex-col space-y-6 text-sm font-bold text-white">
+          <!-- Phone Number -->
+          <li class="flex items-center space-x-2 hover:text-red-950 hover:scale-105 group">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 text-pink-500 group-hover:text-red-950 transition-colors duration-300">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            </svg>
+            <a href="tel:+2347016602640" class="transition-colors duration-300 text-md group-hover:text-red-950">+234-701-660-2640</a>
+          </li>
+
+          <!-- Email Address -->
+          <li class="flex items-center space-x-2 hover:scale-105 group">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 fill-pink-500 stroke-white group-hover:fill-red-500 transition-colors duration-300">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+            <a href="mailto:iheonyekachukwu@gmail.com" class="transition-colors duration-300 text-md group-hover:text-red-950">Iheonyekachukwu@gmail.com</a>
+          </li>
+        </ul>
       </div>
-  </footer>
+
+      <!-- Follow Us Section -->
+<div class="p-6 flex flex-col items-center">
+  <h3 class="text-2xl font-semibold text-gray-600 mb-4  uppercase">Follow Us</h3>
+  <ul class="flex justify-center space-x-4">
+
+    <!-- LinkedIn -->
+    <li class="transform hover:scale-125 transition duration-300">
+      <a href="https://www.linkedin.com/in/iheagwara-onyekachukwu/" target="_blank" class="text-gray-600 hover:text-pink-500">
+        <svg class="w-12 h-12" fill="#0A66C2" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <title>LinkedIn</title>
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      </a>
+    </li>
+
+  </ul>
+</div>
+
+
+    </div>
+
+   
+  </div>
+</section>
+
+<!-- Footer -->
+ 
+<footer class="bg-darkSlate text-white items-center text ">
+  <div class=" gap-8 flex flex-col sm:flex-row border-t border-gray-200 pt-6 text-center text-sm text-gray-300 justify-center">
+    
+      <div>
+        <p class="space-y-2">
+          Copyright © 2024.
+          All rights reserved.
+        </p>
+      </div>
+      
+    </div>
+</footer>
   
     </section>
 
