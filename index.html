@@ -67,92 +67,89 @@
 
 
         <!-- Hero Section -->
-        <section class="flex flex-col justify-start md:h-screen bg-gradient-to-r from-indigoBrand to-pinkAccent text-white">
+<section class="flex flex-col justify-start md:h-screen bg-gradient-to-r from-indigoBrand to-pinkAccent text-white">
 
-            <!-- Navbar -->
-            <header class=" shadow-md">
-                <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-                    <!-- Logo -->
-                    <a href="#hero" class="text-xl font-bold text-purple-800">
-                        Patricia <span class="text-pink-300">Iheagwara</span>
-                    </a>
+  <!-- Navbar -->
+  <header class="shadow-md">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+          <!-- Logo -->
+          <a href="#hero" class="text-xl font-bold text-purple-800">
+              Patricia <span class="text-pink-300">Iheagwara</span>
+          </a>
 
-                    <!-- Desktop Menu -->
-                    <ul class="hidden md:flex space-x-6 uppercase text-sm">
-                      <li>
-                        <a 
-                          href="#portfolio" 
-                          class="hover-link relative text-white border-b border-white/20 pb-2 text-base md:text-lg tracking-wide"
-                          cursor-type="button">
-                          <span class="relative block overflow-hidden">
-                            <span class="inline-block relative transition-transform transform translate-y-0">
+          <!-- Desktop Menu -->
+          <ul class="hidden md:flex space-x-6 uppercase text-sm">
+              <li>
+                  <a href="#portfolio"
+                      class="hover-link relative text-white border-b border-white/20 pb-2 text-base md:text-lg tracking-wide"
+                      cursor-type="button">
+                      <span class="relative block overflow-hidden">
+                          <span class="inline-block relative transition-transform transform translate-y-0">
                               Portfolio <span class="absolute top-0 left-0 translate-y-full">Portfolio</span>
-                            </span>
                           </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a 
-                          href="#contact" 
-                          class="hover-link relative text-white border-b border-white/20 pb-2 text-base md:text-lg tracking-wide"
-                          cursor-type="button">
-                          <span class="relative block overflow-hidden">
-                            <span class="inline-block relative transition-transform transform translate-y-0">
+                      </span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#contact"
+                      class="hover-link relative text-white border-b border-white/20 pb-2 text-base md:text-lg tracking-wide"
+                      cursor-type="button">
+                      <span class="relative block overflow-hidden">
+                          <span class="inline-block relative transition-transform transform translate-y-0">
                               Contact <span class="absolute top-0 left-0 translate-y-full">Contact</span>
-                            </span>
-                            <span class="inline-block relative transition-transform transform translate-y-0 ml-2">
-                              Me <span class="absolute top-0 left-0 translate-y-full">Me</span>
-                            </span>
                           </span>
-                        </a>
-                      </li></ul>
-        
+                          <span class="inline-block relative transition-transform transform translate-y-0 ml-2">
+                              Me <span class="absolute top-0 left-0 translate-y-full">Me</span>
+                          </span>
+                      </span>
+                  </a>
+              </li>
+          </ul>
 
-                    <!-- Mobile Menu Button -->
-                    <button class="block md:hidden" id="menu-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </nav>
+          <!-- Mobile Menu Button -->
+          <button class="block md:hidden" id="menu-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+          </button>
+      </nav>
 
-                <!-- Mobile Dropdown -->
-                <ul class="hidden md:hidden bg-purple-100 text-red-600 py-4 px-6" id="menu">
-                    <li><a href="#portfolio" class="block py-2 hover:text-pink-400">Portfolio</a></li>
-                    <li><a href="#contact" class="block py-2 hover:text-amber-400">Contact Me</a></li>
-                </ul>
-            </header>
+      <!-- Mobile Dropdown -->
+      <ul class="hidden md:hidden bg-purple-100 text-red-600 py-4 px-6" id="menu">
+          <li><a href="#portfolio" class="block py-2 hover:text-pink-400">Portfolio</a></li>
+          <li><a href="#contact" class="block py-2 hover:text-amber-400">Contact Me</a></li>
+      </ul>
+  </header>
 
-            <div class="relative  md:h-screen hidden md:block w-full ">
-                <div class="top-0 pt space-y-6">
-                    <h2 class="uppercase text-3xl md:text-6xl lg:text-7xl font-bold text-gray-800 tracking-widest">
-                        Frontend <br class="hidden sm:block"> Web Developer
-                    </h2>
-                </div>
+  <!-- Hero Content -->
+  <div class="relative w-full h-screen">
+      <!-- Desktop Style -->
+      <div class="hidden md:block w-full h-full">
+          <div class="absolute top-10 left-10 space-y-6">
+              <h2 class="uppercase text-3xl md:text-6xl lg:text-7xl font-bold text-gray-800 tracking-widest">
+                  Frontend <br> Web Developer
+              </h2>
+          </div>
+          <div class="absolute bottom-10 right-10 text-right space-y-6">
+              <h2 class="uppercase text-3xl md:text-6xl lg:text-7xl font-bold text-gray-800 tracking-widest">
+                  Based in <br> Nigeria
+              </h2>
+          </div>
+      </div>
 
-                <div class="absolute text-right bottom-0 left-0 w-full space-y-6">
-                    <h2 class="uppercase text-3xl md:text-6xl lg:text-7xl font-bold text-gray-800 tracking-widest">
-                        Based in <br> Nigeria
-                    </h2>
-                </div>
-            </div>
+      <!-- Mobile Style -->
+      <div class="flex flex-col items-center justify-center text-center space-y-5 h-screen md:hidden">
+          <h2 class="uppercase text-3xl font-bold tracking-widest">
+              Frontend Web Developer
+          </h2>
+          <p class="capitalize text-2xl font-bold tracking-widest">
+              Based in Nigeria
+          </p>
+      </div>
+  </div>
 
-            <!--Mobile style-->
-            <div class=" h-[70vh] md:hidden xs:w-full  text-center justify-center content-center ">
-
-                <div class="space-y-5">
-                    <h2 class="uppercase text-3xl  font-bold  tracking-widest">
-                        Frontend Web Developer
-                    </h2>
-                    <p class="capitalize text-2xl  font-bold  tracking-widest">
-                        Based in Nigeria
-                    </p>
-                </div>
-            </div>
-            
-        </section>
+</section>
 
         <!-- Portfolio Section -->
         <section id="portfolio" class="py-16 px-16  h-screen bg-lightGray text-charcoalGray">
