@@ -47,31 +47,33 @@ document.querySelectorAll("#menu a").forEach((link) => {
 });
 
 
-//portfolio
+//---------portfolio
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const links = [...document.querySelectorAll('.section')];
 
+let isSmallScreen = window.innerWidth <= 768; // Check initial screen size
+
 // Helper function for linear interpolation
 function lerp(start, end, t) {
-    return start * (1 - t) + end * t;
+  return start * (1 - t) + end * t;
 }
 
 // Preload all images
 const images = [
-    './image/Project1.png',
-    './image/Project2.png',
-    './image/Project3.png',
-    './images/4.jpeg',
-    './images/5.jpeg',
-    './images/6.jpeg'
+  './image/Project1.png',
+  './image/Project2.png',
+  './image/Project3.png',
+  './images/4.jpeg',
+  './images/5.jpeg',
+  './images/6.jpeg'
 ];
 
 const imgArr = images.map((src) => {
-    const img = new Image();
-    img.src = src;
-    return img;
+  const img = new Image();
+  img.src = src;
+  return img;
 });
 
 // Variables for tracking mouse and image states
@@ -85,64 +87,146 @@ let target = 0;  // Determines whether to scale in/out
 
 // Update mouse position
 window.addEventListener('mousemove', (e) => {
+  if (!isSmallScreen) {
     targetX = e.clientX;
     targetY = e.clientY;
+  }
+});
+
+// Handle screen resize
+window.addEventListener('resize', () => {
+  isSmallScreen = window.innerWidth <= 768;
+  if (isSmallScreen) {
+    canvas.style.transform = 'translate3d(0, 0, 0)';
+  }
 });
 
 // Draw image on the canvas
 function drawImage(idx) {
-    const img = imgArr[idx];
+  const img = imgArr[idx];
 
-    // Ensure image dimensions are proportional to scaling percentage
-    const scaledWidth = img.width * percent;
-    const scaledHeight = img.height * percent;
+  // Ensure image dimensions are proportional to scaling percentage
+  const scaledWidth = img.width * percent;
+  const scaledHeight = img.height * percent;
 
-    canvas.width = scaledWidth * window.devicePixelRatio;
-    canvas.height = scaledHeight * window.devicePixelRatio;
-    canvas.style.width = `${scaledWidth}px`;
-    canvas.style.height = `${scaledHeight}px`;
+  canvas.width = scaledWidth * window.devicePixelRatio;
+  canvas.height = scaledHeight * window.devicePixelRatio;
+  canvas.style.width = `${scaledWidth}px`;
+  canvas.style.height = `${scaledHeight}px`;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (percent > 0) {
-        ctx.drawImage(img, 0, 0, scaledWidth, scaledHeight);
-    }
+  if (percent > 0) {
+    ctx.drawImage(img, 0, 0, scaledWidth, scaledHeight);
+  }
 }
 
 // Add hover listeners to sections
 links.forEach((link, i) => {
-    link.addEventListener('mouseenter', () => {
-        imgIndex = i;
-        target = 1; // Start scaling in
-    });
+  link.addEventListener('mouseenter', () => {
+    if (!isSmallScreen) {
+      imgIndex = i;
+      target = 1; // Start scaling in
+    }
+  });
 
-    link.addEventListener('mouseleave', () => {
-        target = 0; // Start scaling out
-    });
+  link.addEventListener('mouseleave', () => {
+    if (!isSmallScreen) {
+      target = 0; // Start scaling out
+    }
+  });
 });
 
 // Animation loop
 function animate() {
+  if (!isSmallScreen) {
     // Smoothly interpolate canvas position
     currentX = lerp(currentX, targetX, 0.1);
     currentY = lerp(currentY, targetY, 0.1);
-
-    // Adjust scaling percentage
-    if (target === 1 && percent < 1) {
-        percent += 0.05;
-    } else if (target === 0 && percent > 0) {
-        percent -= 0.05;
-    }
-
-    // Update canvas position and draw image
     canvas.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
-    drawImage(imgIndex);
+  }
 
-    requestAnimationFrame(animate);
+  // Adjust scaling percentage
+  if (target === 1 && percent < 1) {
+    percent += 0.05;
+  } else if (target === 0 && percent > 0) {
+    percent -= 0.05;
+  }
+
+  drawImage(imgIndex);
+  requestAnimationFrame(animate);
 }
 
 // Start the animation loop
 animate();
 
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectItems = document.querySelectorAll('.project-item');
+
+  // Function to count visible projects for each category
+  function updateCounts() {
+    const counts = {
+      all: projectItems.length,
+      design: 0,
+      development: 0,
+    };
+
+    // Count visible items per category
+    projectItems.forEach(item => {
+      if (item.classList.contains('design')) counts.design++;
+      if (item.classList.contains('development')) counts.development++;
+    });
+
+    // Update the count displayed in the buttons
+    filterButtons.forEach(button => {
+      const category = button.getAttribute('data-category');
+      const countElement = button.querySelector('.count');
+      if (countElement && counts[category] !== undefined) {
+        countElement.textContent = `(${counts[category]})`;
+      }
+    });
+  }
+
+  // Function to update active tab and filter items
+  function filterProjects(category) {
+    // Update active button styles
+    filterButtons.forEach(button => {
+      button.classList.remove('bg-black', 'text-white', 'active');
+      button.classList.add('bg-white', 'text-black');
+    });
+
+    const activeButton = document.querySelector(`.filter-btn[data-category="${category}"]`);
+    activeButton.classList.add('bg-black', 'text-white', 'active');
+    activeButton.classList.remove('bg-white', 'text-black');
+
+    // Show or hide project items
+    projectItems.forEach(item => {
+      if (category === 'all' || item.classList.contains(category)) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+
+    // Update the counts after filtering
+    updateCounts();
+  }
+
+  // Initial setup
+  updateCounts();
+  filterProjects('all');
+
+  // Add click event to filter buttons
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-category');
+      filterProjects(category);
+    });
+  });
+});
 
 
